@@ -1,0 +1,10 @@
+<nav class="min-h-[100vh] w-12 md:w-16 bg-slate-100 border-2 border-r-slate-300">
+    <img class="px-1 py-4 mb-2 mx-auto w-12" src="./../../assets/logo/coronavirus.png" alt="Covimap logo">
+    @for (navButton of navButtons; track navButton) {
+        <div class="w-12 h-12 p-3 mb-2 mx-auto">
+            <img class="w-full fill-red-600" src="{{ navButton.icon }}" alt="{{ navButton.icon }}">
+            
+        </div>
+    }
+
+</nav>
