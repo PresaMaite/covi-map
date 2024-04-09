@@ -1,5 +1,8 @@
-<nav class="min-h-[100vh] w-12 md:w-16 bg-slate-100 border-2 border-r-slate-300">
-    <img class="px-1 py-4 mb-2 mx-auto w-12 hover:animate-[spin_4s_linear_infinite]" src="./../../assets/logo/coronavirus.png" alt="Covimap logo">
+<nav class="min-h-[100vh] w-12 md:w-16 bg-slate-50 border-2 border-r-slate-300 inline-block align-top">
+    <img 
+        class="px-1 py-4 mb-2 mx-auto w-12 hover:animate-[spin_4s_linear_infinite]" 
+        src="./../../assets/logo/coronavirus.png" alt="Covimap logo"
+    >
     @for (navButton of navButtons; track navButton) {
         <div class="aspect-auto w-full md:w-12 p-3 mb-2 mx-auto
         hover:bg-slate-200 active:bg-slate-300 focus:outline-none focus:ring focus:ring-slate-200">
@@ -7,5 +10,4 @@
             
         </div>
     }
-
 </nav>
