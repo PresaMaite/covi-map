@@ -1,0 +1,20 @@
+<div 
+    class="bg-slate-50 rounded w-full max-w-72 p-4 
+        flex flex-row items-center gap-4 
+        bg-no-repeat bg-right bg-contain"
+        [ngClass]="getBackgroundImage()"
+>
+    @if (state === "small") {
+        <div class="basis-1/4 m-0">
+            <img src="assets/logo/coronavirus.png" alt="" class="w-full">
+        </div>
+    }
+
+    <div class="w-full">
+        <p class="mb-2">Nombre</p>
+        @if (state === "big") {
+            <hr>
+        }
+        <p class="mt-2">Números</p>
+    </div>
+</div>
