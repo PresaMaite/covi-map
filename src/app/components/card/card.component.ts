@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -8,11 +8,26 @@ import { Component, Input } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent {
-  @Input() state: "big" | "small" = "small";
+export class CardComponent implements OnInit {
 
-  getBackgroundImage(): string {
-    return this.state === "big" ? "bg-[url('/assets/logo/coronavirus.png')]" : '';
+  @Input() cardTitle = "Título";
+  @Input() cardNumber = 7736294;
+  @Input() state: "big" | "small" = "small";
+  @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "green";
+  @Input() icon = "/assets/logo/coronavirus.png";
+
+  blue = "#3C38AD";
+  green = "#84C41A";
+  orange = "#FF6500";
+  red = "#FF060A";
+  sky = "#2F6DFF";
+  brown = "#B60201";
+
+  selectedColor = this[this.color];
+
+  ngOnInit(): void {
+    this.selectedColor = this[this.color];
+    
   }
 
 }

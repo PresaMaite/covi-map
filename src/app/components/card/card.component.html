@@ -1,20 +1,34 @@
 <div 
-    class="bg-slate-50 rounded w-full max-w-72 p-4 
-        flex flex-row items-center gap-4 
-        bg-no-repeat bg-right bg-contain"
-        [ngClass]="getBackgroundImage()"
+    class="bg-slate-50 rounded drop-shadow w-full p-4 relative 
+        flex flex-row items-center gap-4"
 >
     @if (state === "small") {
-        <div class="basis-1/4 m-0">
-            <img src="assets/logo/coronavirus.png" alt="" class="w-full">
+        <div 
+            class="basis-1/4 h-full aspect-square bg-[{{selectedColor}}]"
+            style="mask-image: url('{{icon}}'); mask-repeat: no-repeat; mask-size: contain;"
+        >
+        </div>
+    } @else {
+        <div 
+            class="h-full aspect-square opacity-10 absolute right-0 bg-[{{selectedColor}}]"
+            style="mask-image: url('/assets/logo/coronavirus.png'); mask-repeat: no-repeat; mask-size: contain;"
+        >
         </div>
     }
 
-    <div class="w-full">
-        <p class="mb-2">Nombre</p>
+    <div class="w-full z-10">
+        <p class="mb-2 font-medium">{{cardTitle}}</p>
+
         @if (state === "big") {
-            <hr>
+            <hr class="border-[1px] border-slate-600/10">
         }
-        <p class="mt-2">Números</p>
+
+        <p 
+            class="mt-2 font-black text-xl 
+            {{state === 'big' ? 'text-[' + selectedColor + ']' : ''}}"
+        >
+            {{cardNumber}}
+        </p>
+
     </div>
 </div>
