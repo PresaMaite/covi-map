@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .cardMask {
+        mask-repeat: no-repeat;
+        mask-size: contain;
+    }
+}

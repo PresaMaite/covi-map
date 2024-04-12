@@ -13,19 +13,22 @@ export class CardComponent implements OnInit {
   @Input() cardTitle = "Título";
   @Input() cardNumber = 7736294;
   @Input() state: "big" | "small" = "small";
-  @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "green";
+  @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "sky";
   @Input() icon = "/assets/logo/coronavirus.png";
 
-  blue = "#3C38AD";
-  green = "#84C41A";
-  orange = "#FF6500";
-  red = "#FF060A";
-  sky = "#2F6DFF";
-  brown = "#B60201";
+  // Colores para iconos e imagen del background
+  readonly blue = "#3C38AD";
+  readonly green = "#84C41A";
+  readonly orange = "#FF6500";
+  readonly red = "#FF060A";
+  readonly sky = "#2F6DFF";
+  readonly brown = "#B60201";
 
-  selectedColor = this[this.color];
+  // Color por defecto de los iconos y background
+  selectedColor = this.sky;
 
   ngOnInit(): void {
+    // Aplica el color
     this.selectedColor = this[this.color];
     
   }

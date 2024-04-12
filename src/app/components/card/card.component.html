@@ -1,17 +1,17 @@
 <div 
-    class="bg-slate-50 rounded drop-shadow w-full p-4 relative 
+    class="bg-slate-50 w-full p-4 rounded drop-shadow relative 
         flex flex-row items-center gap-4"
 >
     @if (state === "small") {
         <div 
-            class="basis-1/4 h-full aspect-square bg-[{{selectedColor}}]"
-            style="mask-image: url('{{icon}}'); mask-repeat: no-repeat; mask-size: contain;"
+            class="basis-1/4 h-full aspect-square bg-[{{selectedColor}}] cardMask"
+            style="mask-image: url('{{icon}}');"
         >
         </div>
     } @else {
         <div 
-            class="h-full aspect-square opacity-10 absolute right-0 bg-[{{selectedColor}}]"
-            style="mask-image: url('/assets/logo/coronavirus.png'); mask-repeat: no-repeat; mask-size: contain;"
+            class="h-full aspect-square opacity-10 absolute right-0 bg-[{{selectedColor}}] cardMask"
+            style="mask-image: url('/assets/logo/coronavirus.png');"
         >
         </div>
     }
