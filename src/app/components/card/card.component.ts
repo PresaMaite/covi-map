@@ -12,7 +12,7 @@ export class CardComponent implements OnInit {
 
   @Input() cardTitle = "Título";
   @Input() cardNumber = 7736294;
-  @Input() state: "big" | "small" = "small";
+  @Input() state: "big" | "small" = "big";
   @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "sky";
   @Input() icon = "/assets/logo/coronavirus.png";
 

@@ -1,10 +1,10 @@
 <div 
-    class="bg-slate-50 w-full p-4 rounded drop-shadow relative 
+    class="bg-slate-50 w-full min-w-[189px] p-4 rounded drop-shadow relative 
         flex flex-row items-center gap-4"
 >
     @if (state === "small") {
         <div 
-            class="basis-1/4 h-full aspect-square bg-[{{selectedColor}}] cardMask"
+            class="basis-1/6 min-w-[24px] max-w-[48px] aspect-square bg-[{{selectedColor}}] cardMask"
             style="mask-image: url('{{icon}}');"
         >
         </div>
