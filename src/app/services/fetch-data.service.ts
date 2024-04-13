@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Country } from '../models/country.model';
-import { Global } from '../models/global.model';
+import { Observable, delay, map } from 'rxjs';
+import { Country, ReceivedCountry } from '../models/country.model';
+import { Global, ReceivedGlobal } from '../models/global.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,19 @@ export class FetchDataService {
   getCasesByCountry(country: string) {
     let URL = `${this.URL}countries/${country}`;
     return (
-      this.http.get< Country >(URL)
+      this.http.get< ReceivedCountry >(URL).pipe(
+        delay(3000),
+        map((country) => {
+          return {
+            cases: country.cases,
+            todayCases: country.todayCases,
+            deaths: country.deaths,
+            todayDeaths: country.todayDeaths,
+            recovered: country.recovered,
+            active: country.active
+          } as Country;
+        }),
+      )
     )
   }
 
@@ -31,7 +43,18 @@ export class FetchDataService {
   getGlobalCases() {
     let URL = `${this.URL}all`;
     return (
-      this.http.get< Global >(URL)
+      this.http.get< ReceivedGlobal >(URL).pipe(
+        delay(3000),
+        map((global) => {
+          return {
+            "cases": global.cases,
+            "deaths": global.deaths,
+            "recovered": global.recovered,
+            "active": global.active
+          } as Global;
+
+        })
+      )
     )
   }
 }

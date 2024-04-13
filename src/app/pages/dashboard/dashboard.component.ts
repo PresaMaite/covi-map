@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardComponent } from '../../components/card/card.component';
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Country } from '../../models/country.model';
+import { Global } from '../../models/global.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +12,8 @@ import { Country } from '../../models/country.model';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  cases?: any;
-  globalCases?: any;
+  cases?: Country;
+  globalCases?: Global;
 
   constructor (private fetchData: FetchDataService) {}
 

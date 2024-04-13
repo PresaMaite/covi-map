@@ -1,4 +1,4 @@
-export interface Country {
+export interface ReceivedCountry {
     "updated": number;
     "country": string;
     "countryInfo": {
@@ -29,4 +29,13 @@ export interface Country {
     "activePerOneMillion": number;
     "recoveredPerOneMillion": number;
     "criticalPerOneMillion": number;
+}
+
+export interface Country {
+  "cases": number;
+  "todayCases": number;
+  "deaths": number;
+  "todayDeaths": number;
+  "recovered": number;
+  "active": number;
 }

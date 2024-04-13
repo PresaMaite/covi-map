@@ -2,33 +2,45 @@
     class="bg-slate-50 w-full min-w-[189px] p-4 rounded drop-shadow relative 
         flex flex-row items-center gap-4"
 >
-    @if (state === "small") {
-        <div 
-            class="basis-1/6 min-w-[24px] max-w-[48px] aspect-square bg-[{{selectedColor}}] cardMask"
-            style="mask-image: url('{{icon}}');"
-        >
+    @if (cardNumber === null) {
+        
+        <!-- skeleton -->
+        <div class="w-full">
+            <div class="mb-4 h-4 w-1/2 bg-slate-200 animate-pulse"></div>
+            <div class="mt-4 h-8 w-full bg-slate-200 animate-pulse"></div>
         </div>
+
     } @else {
-        <div 
-            class="h-full aspect-square opacity-10 absolute right-0 bg-[{{selectedColor}}] cardMask"
-            style="mask-image: url('/assets/logo/coronavirus.png');"
-        >
-        </div>
-    }
 
-    <div class="w-full z-10">
-        <p class="mb-2 font-medium">{{cardTitle}}</p>
-
-        @if (state === "big") {
-            <hr class="border-[1px] border-slate-600/10">
+        @if (state === "small") {
+            <div 
+                class="basis-1/6 min-w-[24px] max-w-[48px] aspect-square bg-[{{selectedColor}}] cardMask"
+                style="mask-image: url('{{icon}}');"
+            >
+            </div>
+        } @else {
+            <div 
+                class="h-full aspect-square opacity-10 absolute right-0 bg-[{{selectedColor}}] cardMask"
+                style="mask-image: url('/assets/logo/coronavirus.png');"
+            >
+            </div>
         }
+    
+        <div class="w-full z-10">
+            <p class="mb-2 font-medium">{{cardTitle}}</p>
+    
+            @if (state === "big") {
+                <hr class="border-[1px] border-slate-600/10">
+            }
+    
+            <p 
+                class="mt-2 font-black text-xl 
+                {{state === 'big' ? 'text-[' + selectedColor + ']' : ''}}"
+            >
+                {{cardNumber}}
+            </p>
+    
+        </div>
 
-        <p 
-            class="mt-2 font-black text-xl 
-            {{state === 'big' ? 'text-[' + selectedColor + ']' : ''}}"
-        >
-            {{cardNumber}}
-        </p>
-
-    </div>
+    }
 </div>

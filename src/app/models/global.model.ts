@@ -1,4 +1,4 @@
-export interface Global {
+export interface ReceivedGlobal {
     "updated": number;
     "cases": number;
     "todayCases": number;
@@ -19,5 +19,11 @@ export interface Global {
     "recoveredPerOneMillion": number;
     "criticalPerOneMillion": number;
     "affectedCountries": number;
-  }
-  
+}
+
+export interface Global {
+  "cases": number;
+  "deaths": number;
+  "recovered": number;
+  "active": number;
+}

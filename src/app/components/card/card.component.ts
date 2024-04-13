@@ -11,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
 
   @Input() cardTitle = "Título";
-  @Input() cardNumber = 7736294;
+  @Input() cardNumber: number | undefined = 7736294;
   @Input() state: "big" | "small" = "big";
   @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "sky";
   @Input() icon = "/assets/logo/coronavirus.png";
@@ -30,7 +30,6 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     // Aplica el color
     this.selectedColor = this[this.color];
-    
   }
 
 }
