@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, delay, map } from 'rxjs';
-import { Country, ReceivedCountry } from '../models/country.model';
-import { Global, ReceivedGlobal } from '../models/global.model';
+import { Country, ReceivedCountry } from '../../models/country.model';
+import { Global, ReceivedGlobal } from '../../models/global.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +52,6 @@ export class FetchDataService {
             "recovered": global.recovered,
             "active": global.active
           } as Global;
-
         })
       )
     )

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CardComponent } from '../../components/card/card.component';
-import { FetchDataService } from '../../services/fetch-data.service';
+import { FetchDataService } from '../../services/fetch-data/fetch-data.service';
 import { Country } from '../../models/country.model';
 import { Global } from '../../models/global.model';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, SearchInputComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
