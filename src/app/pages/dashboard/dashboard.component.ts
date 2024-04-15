@@ -4,11 +4,12 @@ import { FetchDataService } from '../../services/fetch-data/fetch-data.service';
 import { Country } from '../../models/country.model';
 import { Global } from '../../models/global.model';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { WorldChartComponent } from './components/world-chart/world-chart.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardComponent, SearchInputComponent],
+  imports: [CardComponent, SearchInputComponent, WorldChartComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
