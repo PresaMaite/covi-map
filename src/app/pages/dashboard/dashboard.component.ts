@@ -15,6 +15,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 export class DashboardComponent implements OnInit {
   cases?: Country;
   globalCases?: Global;
+  country = "Spain";
 
   constructor (private fetchData: FetchDataService) {}
 
@@ -22,10 +23,20 @@ export class DashboardComponent implements OnInit {
     this.getCases();
   }
 
+  changeCountry(country: string) {
+    this.cases = undefined;
+    this.country = country;
+
+    this.fetchData.getCasesByCountry(this.country)
+    .subscribe((cases) => {
+      this.cases = cases;
+    })
+  }
+
 
   getCases() {
 
-    this.fetchData.getCasesByCountry("Spain")
+    this.fetchData.getCasesByCountry(this.country)
       .subscribe((cases) => {
         this.cases = cases;
       })
