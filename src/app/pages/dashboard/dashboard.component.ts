@@ -16,7 +16,8 @@ import { WorldChartComponent } from './components/world-chart/world-chart.compon
 export class DashboardComponent implements OnInit {
   cases?: Country;
   globalCases?: Global;
-  country = "Spain";
+  country = "724";
+  countryName = "Spain";
 
   constructor (private fetchData: FetchDataService) {}
 
@@ -47,6 +48,14 @@ export class DashboardComponent implements OnInit {
         this.globalCases = globalCases;
       })
 
+  }
+
+
+  getChartID(nameID: any) {
+    this.country = nameID.ID;
+    this.countryName = nameID.name;
+
+    this.changeCountry(nameID.ID)
   }
 
 }

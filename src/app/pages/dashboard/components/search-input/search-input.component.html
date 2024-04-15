@@ -23,16 +23,16 @@
     <div class="absolute h-[252px] overflow-y-scroll right-0 z-10 w-full origin-top-right divide-y divide-slate-50 rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" 
         [class.hidden]="!toggle"
         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-            @for (country of countries.getCountries(); track $index) {
+            @for (country of countryNames; track $index) {
                 <div class="py-1 hover:bg-slate-100 cursor-pointer" role="none">
                     <div 
                         class="text-gray-700 block px-4 py-2 text-sm" 
                         role="menuitem" 
                         tabindex="-1" 
-                        id="{{$index}}"
+                        id="{{country.id}}"
                         (click)="selectedCountry(country)"
                     >
-                        {{ country }}
+                        {{ country.countryName }}
                     </div>
                 </div>
             }
