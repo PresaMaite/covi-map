@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Chart, CategoryScale } from 'chart.js';
-import { ChoroplethController, ColorScale, Feature, GeoFeature, ProjectionScale, topojson } from 'chartjs-chart-geo';
+import { ChoroplethController, ColorScale, GeoFeature, ProjectionScale } from 'chartjs-chart-geo';
 import 'chartjs-chart-geo';
 
 import { CountriesService } from '../../../../services/countries/countries.service';
@@ -22,6 +22,9 @@ Chart.register(GeoFeature);
 })
 export class WorldChartComponent implements OnInit {
  
+  /**
+   * Destruye la gráfica para volver a pintarla
+   */
   @Input() 
   public set countryId(id : string) {
     this._countryId = id;
@@ -35,6 +38,9 @@ export class WorldChartComponent implements OnInit {
     return this._countryId;
   }
 
+  /**
+   * Emite el nombre y el ID del país seleccionado en la gráfica
+   */
   @Output() onClickID = new EventEmitter();
   
   private _countryId: any;
@@ -52,6 +58,9 @@ export class WorldChartComponent implements OnInit {
       })
   }
 
+  /**
+   * Pinta y configura la gráfica
+   */
   getCountries() {
     let countries = this.countries;
     let data = countries.map((d: any) => ({feature: d, value: d.id === this.countryId ? 1 : 0}))

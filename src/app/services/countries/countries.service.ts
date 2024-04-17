@@ -13,6 +13,10 @@ export class CountriesService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Recupera los datos de los países
+   * @returns Devuelve los datos de los países y su path de dibujo en la gráfica
+   */
   getCountriesChart() {
 
     return (
@@ -30,6 +34,10 @@ export class CountriesService {
     )
   }
 
+  /**
+   * Recupera los datos de los países
+   * @returns Devuelve un array con los nombres de los países y su respectivo ID
+   */
   getCountriesName() {
     return (
       this.http.get(this.URL)
