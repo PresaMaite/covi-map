@@ -1,4 +1,4 @@
-<app-search-input (onSelected)="changeCountry($event)" />
+<app-search-input (onSelected)="changeCountry($event)" [countryId]="countryName" />
 
 <div class="flex flex-col gap-4 max-w-[1280px]
     md:flex-row md:flex-wrap">
@@ -27,6 +27,8 @@
     />
 </div>
 
+<div class="my-4"></div>
+<app-world-chart [countryId]="country" (onClickID)="getChartID($event)"/>
 <div class="my-4"></div>
 
 <div class="flex flex-col gap-4 max-w-[1280px]
