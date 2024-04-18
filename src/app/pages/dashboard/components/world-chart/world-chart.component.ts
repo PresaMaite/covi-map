@@ -75,6 +75,8 @@ export class WorldChartComponent implements OnInit {
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         showOutline: true,
         showGraticule: true,
         plugins: {
