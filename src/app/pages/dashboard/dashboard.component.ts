@@ -22,40 +22,56 @@ export class DashboardComponent implements OnInit {
   constructor (private fetchData: FetchDataService) {}
 
   ngOnInit(): void {
-    this.getCases();
+    this.getCountryCases();
+    this.getAllCases();
   }
 
-  changeCountry(country: string) {
+  
+  /**
+   * Actualiza el ID y solicita nuevos datos para pintar
+   * @param country Recibe el ID del país seleccionado en el search
+   */
+  getNewCountry(country: string) {
     this.cases = undefined;
     this.country = country;
 
-    this.fetchData.getCasesByCountry(this.country)
-    .subscribe((cases) => {
-      this.cases = cases;
-    })
+    this.getCountryCases();
   }
 
 
-  getCases() {
+  /**
+   * Fetch de los casos del país seleccionado
+   */
+  getCountryCases() {
 
     this.fetchData.getCasesByCountry(this.country)
       .subscribe((cases) => {
         this.cases = cases;
       })
+  }
+
+
+  /**
+   * Fetch totales de todos los casos del mundo
+   */
+  getAllCases() {
 
     this.fetchData.getGlobalCases()
       .subscribe((globalCases) => {
         this.globalCases = globalCases;
       })
-
   }
 
 
+  /**
+   * Actualiza el ID y solicita nuevos datos para pintar
+   * @param nameID Recibe un objeto con el ID y el nombre del país seleccionado en el chart
+   */
   getChartID(nameID: any) {
     this.country = nameID.ID;
     this.countryName = nameID.name;
 
-    this.changeCountry(nameID.ID)
+    this.getNewCountry(nameID.ID);
   }
 
 }
