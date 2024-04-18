@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../../services/fetch-data/fetch-data.service';
+import { CardComponent } from '../../components/card/card.component';
 
 @Component({
   selector: 'app-top10',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './top10.component.html',
   styleUrl: './top10.component.css'
 })
 export class Top10Component implements OnInit {
-  topCases: any [] = [];
+  topCases: any[] = [];
   topDeaths: any[] = [];
   topActives: any[] = [];
   topRecovered: any[] = [];
-  topTodayDeaths: any[] = [];
-  topTodayCases: any[] = [];
+
+  skeleton: any[] = new Array(10);
 
 
   constructor(private fetchData: FetchDataService) {}
@@ -22,8 +23,8 @@ export class Top10Component implements OnInit {
 
   ngOnInit(): void {
     this.getCountryCases();
-    this.sortArrays;
   }
+
 
   getCountryCases() {
     this.fetchData.getAllCountries()
@@ -49,36 +50,34 @@ export class Top10Component implements OnInit {
             flag: country.countryInfo.flag,
             value: country.recovered
           }
-          let cardTodayDeaths: any = {
-            name: country.country,
-            flag: country.countryInfo.flag,
-            value: country.todayDeaths
-          }
-          let cardTodayCases: any = {
-            name: country.country,
-            flag: country.countryInfo.flag,
-            value: country.todayCases
-          }
 
           this.topCases.push(cardCases);
           this.topDeaths.push(cardDeaths);
           this.topActives.push(cardActives);
           this.topRecovered.push(cardRecovered);
-          this.topTodayDeaths.push(cardTodayDeaths);
-          this.topTodayCases.push(cardTodayCases);
+
+          this.sortArrays();
+          this.top10();
 
         })
 
       })
   }
 
+
   sortArrays() {
-    this.topCases = this.topCases.sort((a, b) => a.value - b.value);
-    this.topDeaths = this.topDeaths.sort((a, b) => a.value - b.value);
-    this.topActives = this.topActives.sort((a, b) => a.value - b.value);
-    this.topRecovered = this.topRecovered.sort((a, b) => a.value - b.value);
-    this.topTodayDeaths = this.topTodayDeaths.sort((a, b) => a.value - b.value);
-    this.topTodayCases = this.topTodayCases.sort((a, b) => a.value - b.value);
+    this.topCases = this.topCases.sort((a, b) => b.value - a.value);
+    this.topDeaths = this.topDeaths.sort((a, b) => b.value - a.value);
+    this.topActives = this.topActives.sort((a, b) => b.value - a.value);
+    this.topRecovered = this.topRecovered.sort((a, b) => b.value - a.value);
+  }
+
+
+  top10() {
+    this.topCases = this.topCases.slice(0, 10);
+    this.topDeaths = this.topDeaths.slice(0, 10);
+    this.topActives = this.topActives.slice(0, 10);
+    this.topRecovered = this.topRecovered.slice(0, 10);
   }
 
 }

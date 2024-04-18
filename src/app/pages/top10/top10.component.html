@@ -1,13 +1,71 @@
 <div class="max-w-[1280px] xl:w-[calc(1280px-64px)] flex flex-col ">
-    <h2 class="text-lg">Global Cases</h2>
+    <h2 class="text-lg">Top 10</h2>
     <div class="flex flex-col gap-4 max-w-[1280px] border-t-2 border-t-slate-300
-    md:flex-row md:flex-wrap pt-4">
-        <div class="flex-1 bg-slate-400">1</div>
-        <div class="flex-1 bg-slate-400">2</div>
-        <div class="flex-1 bg-slate-400">3</div>
+    sm:flex-row sm:flex-wrap pt-4">
 
-        <div class="flex-1 bg-slate-400">4</div>
-        <div class="flex-1 bg-slate-400">5</div>
-        <div class="flex-1 bg-slate-400">6</div>
+
+        <div class="w-full sm:w-[calc(50%-8px)] lg:flex-1">
+            <h3>Cases</h3>
+            <div class="flex flex-col gap-4">
+                @if (topCases.length === 0) {
+                    @for (card of skeleton; track $index) {
+                        <app-card  />
+                    }
+                } @else {
+                    @for (card of topCases; track $index) {
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                    }
+                }
+            </div>
+        </div>
+
+
+        <div class="w-full sm:w-[calc(50%-8px)] lg:flex-1">
+            <h3>Deaths</h3>
+            <div class="flex flex-col gap-4">
+                @if (topDeaths.length === 0) {
+                    @for (card of skeleton; track $index) {
+                        <app-card  />
+                    }
+                } @else {
+                    @for (card of topDeaths; track $index) {
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                    }
+                }
+            </div>
+        </div>
+
+
+        <div class="w-full sm:w-[calc(50%-8px)] lg:flex-1">
+            <h3>Actives</h3>
+            <div class="flex flex-col gap-4">
+                @if (topActives.length === 0) {
+                    @for (card of skeleton; track $index) {
+                        <app-card  />
+                    }
+                } @else {
+                    @for (card of topActives; track $index) {
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                    }
+                }
+            </div>
+        </div>
+
+
+        <div class="w-full sm:w-[calc(50%-8px)] lg:flex-1">
+            <h3>Recovered</h3>
+            <div class="flex flex-col gap-4">
+
+                @if (topRecovered.length === 0) {
+                    @for (card of skeleton; track $index) {
+                        <app-card  />
+                    }
+                } @else {
+                    @for (card of topRecovered; track $index) {
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                    }
+                }
+        </div>
+
     </div>
 </div>
