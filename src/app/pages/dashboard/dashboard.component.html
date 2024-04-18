@@ -1,0 +1,58 @@
+<app-search-input (onSelected)="getNewCountry($event)" [countryId]="countryName" />
+
+<div class="max-w-[1280px] flex flex-col xl:flex-row xl:gap-4">
+
+    <div class="flex flex-col gap-4 max-w-[1280px]
+    md:flex-row md:flex-wrap xl:w-[calc(50%-8px)]">
+        <app-card class="md:w-[calc(50%-8px)]" 
+            [color]="'blue'" [state]="'big'" [cardTitle]="'Total Cases'" [cardNumber]="cases?.cases" 
+        />
+
+        <app-card class="md:w-[calc(50%-8px)]" 
+            [color]="'red'" [state]="'big'" [cardTitle]="'Total Deaths'" [cardNumber]="cases?.deaths" 
+        />
+
+        <app-card class="md:w-[calc(50%-8px)]" 
+            [color]="'green'" [state]="'big'" [cardTitle]="'Total Recovered'" [cardNumber]="cases?.recovered" 
+        />
+
+        <app-card class="md:w-[calc(50%-8px)]" 
+            [color]="'sky'" [state]="'big'" [cardTitle]="'Total Active'" [cardNumber]="cases?.active" 
+        />
+
+        <app-card class="md:w-[calc(50%-8px)]" 
+            [color]="'orange'" [state]="'big'" [cardTitle]="'New Cases'" [cardNumber]="cases?.todayCases" 
+        />
+
+        <app-card class="md:w-[calc(50%-8px)]" 
+            [color]="'brown'" [state]="'big'" [cardTitle]="'New Deaths'" [cardNumber]="cases?.todayDeaths" 
+        />
+    </div>
+    
+    <div class="xl:w-[calc(50%-8px)]">
+        <app-world-chart [countryId]="country" (onClickID)="getChartID($event)"/>
+    </div>
+    
+
+</div>
+
+<div class="xl:mt-4">
+    <h2 class="text-lg">Global Cases</h2>
+    <div class="flex flex-col gap-4 max-w-[1280px] border-t-2 border-t-slate-300
+        md:flex-row md:flex-wrap pt-4">
+        <app-card class="md:w-[calc(50%-8px)] lg:flex-1" 
+            [color]="'blue'" [state]="'small'" [cardTitle]="'Total Confirmed'" [cardNumber]="globalCases?.cases" />
+
+        <app-card class="md:w-[calc(50%-8px)] lg:flex-1" 
+            [color]="'green'" [state]="'small'" [cardTitle]="'Total Recovered'" [cardNumber]="globalCases?.recovered" />
+
+        <app-card class="md:w-[calc(50%-8px)] lg:flex-1" 
+            [color]="'red'" [state]="'small'" [cardTitle]="'Total Deaths'" [cardNumber]="globalCases?.deaths" />
+
+        <app-card class="md:w-[calc(50%-8px)] lg:flex-1"
+            [color]="'brown'" [state]="'small'" [cardTitle]="'Total Active'" [cardNumber]="globalCases?.active" />
+
+    </div>
+
+</div>
+
