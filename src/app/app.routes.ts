@@ -5,5 +5,8 @@ export const routes: Routes = [{
         path: '', redirectTo: '/dashboard', pathMatch: 'full' 
     }, {
         path: 'dashboard', component: DashboardComponent
+    }, { 
+        path: 'top10', loadComponent: () => import('./pages/top10/top10.component')
+            .then(c => c.Top10Component)
     }
-];
+]
