@@ -10,11 +10,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() cardTitle = "Título";
-  @Input() cardNumber: number | undefined = 7736294;
+  @Input() cardTitle = "Error";
+  @Input() cardNumber: number | undefined | null = null;
   @Input() state: "big" | "small" = "big";
   @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "sky";
   @Input() icon = "/assets/logo/coronavirus.png";
+  @Input() needFlag = false;
 
   // Colores para iconos e imagen del background
   readonly blue = "#3C38AD";

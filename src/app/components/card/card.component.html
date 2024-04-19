@@ -14,8 +14,10 @@
 
         @if (state === "small") {
             <div 
-                class="basis-1/6 min-w-[24px] max-w-[48px] aspect-square bg-[{{selectedColor}}] cardMask"
-                style="mask-image: url('{{icon}}');"
+                class="basis-1/6 min-w-[24px] max-w-[48px] bg-[{{selectedColor}}]"
+                [style]="needFlag === true ? 'background-image: url(' + icon + ')' : 'mask-image: url(' + icon +')'"
+                [ngClass]="needFlag === true ? 'cardFlag' : 'cardMask' "
+
             >
             </div>
         } @else {

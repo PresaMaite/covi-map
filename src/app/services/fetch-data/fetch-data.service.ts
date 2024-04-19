@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, delay, map } from 'rxjs';
 import { Country, ReceivedCountry } from '../../models/country.model';
 import { Global, ReceivedGlobal } from '../../models/global.model';
+import { Countries, ReceivedCountries } from '../../models/countries.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,4 +57,39 @@ export class FetchDataService {
       )
     )
   }
+
+
+  getAllCountries() {
+    let URL = `${this.URL}countries`;
+    return (
+      this.http.get< ReceivedCountries[] >(URL).pipe(
+        delay(3000),
+        map((allCountries) => {
+          let arrayCountries: Countries[] = allCountries.map((country) => {
+            return ( {
+              "country": country.country,
+              "countryInfo": {
+                "flag": country.countryInfo.flag,
+              }, 
+              "cases": country.cases,
+              "todayCases": country.todayCases,
+              "deaths": country.deaths,
+              "todayDeaths": country.todayDeaths,
+              "recovered": country.recovered,
+              "active": country.active,
+            } as Countries)
+          })
+
+          return (
+            arrayCountries
+          )
+          
+        })
+      )
+    )
+  }
+
+
+
+
 }
