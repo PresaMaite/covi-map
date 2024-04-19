@@ -13,7 +13,7 @@
                     }
                 } @else {
                     @for (card of topCases; track $index) {
-                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" [needFlag]="true" />
                     }
                 }
             </div>
@@ -29,7 +29,7 @@
                     }
                 } @else {
                     @for (card of topDeaths; track $index) {
-                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" [needFlag]="true" />
                     }
                 }
             </div>
@@ -45,7 +45,7 @@
                     }
                 } @else {
                     @for (card of topActives; track $index) {
-                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" [needFlag]="true" />
                     }
                 }
             </div>
@@ -62,7 +62,7 @@
                     }
                 } @else {
                     @for (card of topRecovered; track $index) {
-                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" />
+                        <app-card [cardNumber]="card.value" [cardTitle]="card.name" [icon]="card.flag" [state]="'small'" [needFlag]="true" />
                     }
                 }
         </div>

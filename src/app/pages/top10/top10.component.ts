@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../../services/fetch-data/fetch-data.service';
 import { CardComponent } from '../../components/card/card.component';
+import { CardCountry } from './models/card-country.models';
 
 @Component({
   selector: 'app-top10',
@@ -10,10 +11,10 @@ import { CardComponent } from '../../components/card/card.component';
   styleUrl: './top10.component.css'
 })
 export class Top10Component implements OnInit {
-  topCases: any[] = [];
-  topDeaths: any[] = [];
-  topActives: any[] = [];
-  topRecovered: any[] = [];
+  topCases: CardCountry[] = [];
+  topDeaths: CardCountry[] = [];
+  topActives: CardCountry[] = [];
+  topRecovered: CardCountry[] = [];
 
   skeleton: any[] = new Array(10);
 
@@ -26,26 +27,29 @@ export class Top10Component implements OnInit {
   }
 
 
+  /**
+   * Realiza el fetch y prepara los arrays
+   */
   getCountryCases() {
     this.fetchData.getAllCountries()
       .subscribe((countries) => {
         countries.map((country) => {
-          let cardCases: any = {
+          let cardCases: CardCountry = {
             name: country.country,
             flag: country.countryInfo.flag,
             value: country.cases
           }
-          let cardDeaths: any = {
+          let cardDeaths: CardCountry = {
             name: country.country,
             flag: country.countryInfo.flag,
             value: country.deaths
           }
-          let cardActives: any = {
+          let cardActives: CardCountry = {
             name: country.country,
             flag: country.countryInfo.flag,
             value: country.active
           }
-          let cardRecovered: any = {
+          let cardRecovered: CardCountry = {
             name: country.country,
             flag: country.countryInfo.flag,
             value: country.recovered
@@ -65,6 +69,9 @@ export class Top10Component implements OnInit {
   }
 
 
+  /**
+   * Ordena los arrays de mayor a menor según los casos
+   */
   sortArrays() {
     this.topCases = this.topCases.sort((a, b) => b.value - a.value);
     this.topDeaths = this.topDeaths.sort((a, b) => b.value - a.value);
@@ -73,6 +80,9 @@ export class Top10Component implements OnInit {
   }
 
 
+  /**
+   * Corta y obtiene las primeras 10 posiciones
+   */
   top10() {
     this.topCases = this.topCases.slice(0, 10);
     this.topDeaths = this.topDeaths.slice(0, 10);

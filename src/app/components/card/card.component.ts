@@ -15,6 +15,7 @@ export class CardComponent implements OnInit {
   @Input() state: "big" | "small" = "big";
   @Input() color: "red" | "green" | "blue" | "orange" | "sky" | "brown" = "sky";
   @Input() icon = "/assets/logo/coronavirus.png";
+  @Input() needFlag = false;
 
   // Colores para iconos e imagen del background
   readonly blue = "#3C38AD";
