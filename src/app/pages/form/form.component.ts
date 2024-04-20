@@ -11,7 +11,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 export class FormComponent {
   form = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s]*$/) ]],
-    lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s]*$/)] ],
+    lastName: ['', [Validators.minLength(2), Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s]*$/)] ],
     email: ['', [Validators.required, Validators.email]],
     reason: ['', Validators.required],
     description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)] ],
@@ -20,7 +20,8 @@ export class FormComponent {
   constructor(private formBuilder: FormBuilder) {}
 
   onSubmit(event: any) {
-    console.log(event);
-    console.log(this.form);
+    console.log(this.form.status);
+
+    this.form.reset();
   }
 }
