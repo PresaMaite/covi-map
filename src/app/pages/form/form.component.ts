@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -9,13 +9,15 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './form.component.css'
 })
 export class FormComponent {
-  form = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    reason: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required])
+  form = this.formBuilder.group({
+    firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s]*$/) ]],
+    lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s]*$/)] ],
+    email: ['', [Validators.required, Validators.email]],
+    reason: ['', Validators.required],
+    description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)] ],
   })
+
+  constructor(private formBuilder: FormBuilder) {}
 
   onSubmit(event: any) {
     console.log(event);
