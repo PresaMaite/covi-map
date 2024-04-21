@@ -56,3 +56,13 @@
 
 </div>
 
+@if (isError) {
+    <app-modal 
+        [isOpen]="isError"
+        [title]="'We are sorry'"
+        [description]="'We do not have data for the country you have selected.'" 
+        (onClose)="closeModal()"
+    />
+
+}
+

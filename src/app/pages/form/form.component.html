@@ -112,8 +112,8 @@
                 </div>
             </div>
             <div class="mt-6">
-                <button type="submit" [disabled]="form.valid === false" 
-                class="disabled:bg-slate-400 w-full rounded bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enviar</button>
+                <button type="submit" [disabled]="form.valid === false"
+                class="disabled:bg-slate-400 w-full rounded bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send mail</button>
             </div>
             
         </div>
@@ -121,4 +121,14 @@
     </div>
       
 </form>
+
+@if (isModalOpen) {
+    <app-modal 
+        [isOpen]="isModalOpen" 
+        [title]="'Thank you for writing to us'"
+        [description]="'Your email has been successfully sent. We will contact you soon.'"
+        (onClose)="closeModal()"
+    />
+}
+
   

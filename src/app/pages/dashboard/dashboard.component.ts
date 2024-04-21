@@ -5,11 +5,13 @@ import { Country } from '../../models/country.model';
 import { Global } from '../../models/global.model';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { WorldChartComponent } from './components/world-chart/world-chart.component';
+import { map, catchError, throwError, take, of } from 'rxjs';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardComponent, SearchInputComponent, WorldChartComponent],
+  imports: [CardComponent, SearchInputComponent, WorldChartComponent, ModalComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -18,6 +20,8 @@ export class DashboardComponent implements OnInit {
   globalCases?: Global;
   country = "724";
   countryName = "Spain";
+
+  isError = false;
 
   constructor (private fetchData: FetchDataService) {}
 
@@ -44,7 +48,13 @@ export class DashboardComponent implements OnInit {
    */
   getCountryCases() {
 
-    this.fetchData.getCasesByCountry(this.country)
+    this.fetchData.getCasesByCountry(this.country).pipe(
+      catchError((err,caught) => {
+        console.log('Error', err)
+        this.isError = true;
+        return of (undefined);
+      })
+    )
       .subscribe((cases) => {
         this.cases = cases;
       })
@@ -74,4 +84,8 @@ export class DashboardComponent implements OnInit {
     this.getNewCountry(nameID.ID);
   }
 
+  closeModal() {
+    this.isError = false;
+  }
+  
 }

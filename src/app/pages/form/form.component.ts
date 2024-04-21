@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ModalComponent],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
@@ -17,11 +18,22 @@ export class FormComponent {
     description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)] ],
   })
 
+  isModalOpen = false;
+
   constructor(private formBuilder: FormBuilder) {}
 
   onSubmit(event: any) {
     console.log(this.form.status);
-
+    this.showModal();
     this.form.reset();
   }
+
+  showModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
 }
