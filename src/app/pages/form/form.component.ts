@@ -26,6 +26,8 @@ export class FormComponent {
     console.log(this.form.status);
     this.showModal();
     this.form.reset();
+
+    this.form.get('reason')?.setValue('');
   }
 
   showModal() {
