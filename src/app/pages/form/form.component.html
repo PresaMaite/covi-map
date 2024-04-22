@@ -1,0 +1,134 @@
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <div class="max-w-[1280px] xl:w-[calc(1280px-64px)] flex flex-col lg:flex-row">
+        <div class="lg:flex-1">
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
+        </div>
+  
+        <div class="pb-12 lg:flex-auto lg:bg-slate-50 lg:p-4 lg:rounded lg:shadow">
+
+            <div class="mt-10 lg:mt-0 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="sm:col-span-3">
+                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">*First name</label>
+                    <div class="mt-2 relative">
+                        <input type="text" name="first-name" id="first-name" autocomplete="given-name" formControlName="firstName" 
+                        [class.border-red-500]="form.get('firstName')?.invalid && 
+                        (form.get('firstName')?.dirty || form.get('firstName')?.touched)"
+
+                        [class.border-green-500]="form.get('firstName')?.valid"
+                        class="block w-full rounded border-2 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        @if (form.get('firstName')?.hasError('pattern')) {
+                            <div class="absolute">
+                                Only characters are allowed
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+                    <div class="mt-2 relative">
+                        <input type="text" name="last-name" id="last-name" autocomplete="family-name" formControlName="lastName" 
+                        [class.border-red-500]="form.get('lastName')?.invalid && 
+                        (form.get('lastName')?.dirty || form.get('lastName')?.touched)"
+
+                        [class.border-green-500]="form.get('lastName')?.valid && 
+                        (form.get('lastName')?.dirty || form.get('lastName')?.touched)"
+                        class="block w-full rounded border-2 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        @if (form.get('lastName')?.hasError('pattern')) {
+                            <div class="absolute">
+                                Only characters are allowed
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="sm:col-span-6">
+                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">*Email address</label>
+                    <div class="mt-2 relative">
+                        <input id="email" name="email" type="email" autocomplete="email" formControlName="email"  
+                        [class.border-red-500]="form.get('email')?.invalid && 
+                        (form.get('email')?.dirty || form.get('email')?.touched)"
+
+                        [class.border-green-500]="form.get('email')?.valid"
+                        class="block w-full rounded border-2 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        @if (form.get('email')?.hasError('email')) {
+                            <div class="absolute">
+                                Incorrect email
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="reason" class="block text-sm font-medium leading-6 text-gray-900">*Reason</label>
+                    <div class="mt-2 w-full">
+                        <select id="reason" name="reason" autocomplete="reason-list" formControlName="reason" 
+                        [class.border-red-500]="form.get('reason')?.invalid && 
+                        (form.get('reason')?.dirty || form.get('reason')?.touched)"
+
+                        class="min-w-full block rounded border-2 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            <option value="" disabled selected hidden>Choose an option</option>
+                            <option>Ask for information</option>
+                            <option>Bug report</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full relative">
+                    <label for="about" class="block text-sm font-medium leading-6 text-gray-900">*Description</label>
+                    <div class="mt-2">
+                        <textarea id="about" name="about" rows="3" formControlName="description" 
+                        [class.border-red-500]="form.get('description')?.invalid && 
+                        (form.get('description')?.dirty || form.get('description')?.touched)"
+
+                        [class.border-green-500]="form.get('description')?.valid"
+                        class="block w-full rounded border-2 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                    </div>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">Max.400 characters</p>
+                    @if (form.get('description')?.hasError('maxlength')) {
+                        <div class="absolute">
+                            Only 400 characters
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="mt-6">
+                <button type="submit" [disabled]="form.valid === false"
+                class="disabled:bg-slate-400 w-full rounded bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send mail</button>
+            </div>
+            
+        </div>
+
+    </div>
+      
+</form>
+
+@if (isModalOpen) {
+    <app-modal 
+        [isOpen]="isModalOpen" 
+        [title]="'Thank you for writing to us'"
+        [description]="'Your email has been successfully sent. We will contact you soon.'"
+        (onClose)="closeModal()"
+    />
+}
+
+  
