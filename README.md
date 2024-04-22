@@ -1,27 +1,83 @@
-# CoviMap
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-## Code scaffolding
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  <h3 align="center">Covi Map</h3>
 
-## Build
+  <p align="center">
+    Infórmate de los casos de COVID en tiempo real
+  </p>
+</div>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+<!-- ABOUT THE PROJECT -->
+## Sobre el proyecto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  <a href="">
+    <img src="./src/assets/readme/covimap.png" alt="Covi Map screenshot" width="100%">
+  </a>
 
-## Running end-to-end tests
+Con esta web podrás informarte de los casos de COVID en tiempo real, tanto de países de forma individual, global e incluso saber cuáles son los países más afectados por esta enfermedad.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+También dispone de un pequeño formulario de contacto.
 
-## Further help
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+### Herramientas utilizadas
+
+En esta sección expondré los frameworks, librerías y herramientas utilizadas:
+
+* Angular 17
+* TypeScript
+* Tailwind
+* RxJS
+* CSS
+* HTML
+
+API consumida:
+<a href="https://disease.sh/docs/#/" >https://disease.sh/docs/#/</a>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Inicializando el proyecto
+
+Sigue los siguientes pasos para inicializar el proyecto en local:
+
+Instala las decependencias de NPM:
+   ```sh
+   npm install
+   ```
+
+Levantar servidor en local:
+   ```sh
+   npm run dev
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
