@@ -4,10 +4,15 @@
         src="./../../assets/logo/coronavirus.png" alt="Covimap logo"
     >
     @for (navButton of navButtons; track navButton) {
-        <div class="aspect-auto w-full md:w-12 p-3 mb-2 mx-auto
-        hover:bg-slate-200 active:bg-slate-300 focus:outline-none focus:ring focus:ring-slate-200">
-            <img class="w-full fill-red-600" src="{{ navButton.icon }}" alt="{{ navButton.icon }}">
-            
+        <div class="aspect-auto w-full md:w-12 p-3 mb-2 mx-auto 
+        hover:bg-slate-200 active:bg-slate-300 focus:outline-none focus:ring focus:ring-slate-200" 
+        routerLinkActive="bg-slate-300" 
+        >
+    
+            <a routerLink="{{ navButton.url }}" >
+                <img class="w-full fill-red-600" src="{{ navButton.icon }}" alt="{{ navButton.icon }}">
+            </a>
+
         </div>
     }
 </nav>
