@@ -76,7 +76,7 @@ Instala las decependencias de NPM:
 
 Levantar servidor en local:
    ```sh
-   npm run dev
+   npm start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
